@@ -20,7 +20,7 @@ function App() {
         <>
             <Header title="Projects"/>
 
-            <img src={ backgroundImage } />
+            <img width={300} src={ backgroundImg } />
 
             <ul>
                 {projects.map(project => <li key={project}>{project}</li>)}
