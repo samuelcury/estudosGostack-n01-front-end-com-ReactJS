@@ -14,12 +14,19 @@ function App() {
         })
     }, []);
 
-    function handleAddProject() {
+    async function handleAddProject() {
+        // setProjects([...projects, `Novo Projeto ${Date.now()}`]);
 
-        setProjects([...projects, `Novo Projeto ${Date.now()}`]);
+        const response = await api.post('projects',{
+            title: `Novo Projeto ${Date.now()}`,
+            owner: "Carl Sagan"
+        });
 
-        console.log(projects)
-    }
+        const project = response.data;
+
+        setProjects([...projects, project]);   
+        };
+    
 
     return (
         <>
@@ -32,6 +39,6 @@ function App() {
             <button type="button" onClick={handleAddProject}>Adicionar projeto</button>
         </>
     );
-}
+};
 
 export default App;
